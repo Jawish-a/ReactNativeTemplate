@@ -1,15 +1,19 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TextProps } from 'react-native';
 import React, { Children } from 'react';
 import { typography } from '../assets/theme/typography';
 import { colors } from '../assets/theme/colors';
 
-export default function AppText({ children, ...otherProps }) {
+export const AppText: React.FC<TextProps> = ({ children, ...otherProps }) => {
   return (
-    <Text {...otherProps} style={[styles.text, otherProps.style]}>
+    <Text
+      // selectable={true}
+      // selectionColor={colors.blue[100]}
+      {...otherProps}
+      style={[styles.text, otherProps.style]}>
       {children}
     </Text>
   );
-}
+};
 
 const styles = StyleSheet.create({
   text: {
