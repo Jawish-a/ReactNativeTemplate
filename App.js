@@ -16,12 +16,13 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AppText from './src/components/AppText';
 
-const Section = ({children, title}) => {
+const Section = ({ children, title }) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
-      <Text
+      <AppText
         style={[
           styles.sectionTitle,
           {
@@ -29,7 +30,7 @@ const Section = ({children, title}) => {
           },
         ]}>
         {title}
-      </Text>
+      </AppText>
       <Text
         style={[
           styles.sectionDescription,
