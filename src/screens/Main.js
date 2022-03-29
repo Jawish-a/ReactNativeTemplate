@@ -21,6 +21,7 @@ import { API_URL, API_TOKEN } from '@env';
 import { AppText } from '../components/AppText';
 import { onlineManager } from 'react-query';
 import { formatNumbers } from '../utils/formatNumbers';
+import Icon from 'react-native-vector-icons/Feather';
 
 const Section = ({ children, title }) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -49,6 +50,8 @@ const Section = ({ children, title }) => {
   );
 };
 
+const MyIcon = () => <Icon name="home" size={30} color="#900" />;
+
 const Main = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -67,6 +70,7 @@ const Main = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <MyIcon />
           <Section title={API_URL}>
             Edit <Text style={styles.highlight}>Main.js</Text> to change this
             screen and then come back to see your edits.
