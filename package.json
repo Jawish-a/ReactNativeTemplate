@@ -7,11 +7,14 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start:staging": "APP_ENV=staging npx react-native start --reset-cache",
+    "start:prod": "APP_ENV=production npx react-native start --reset-cache"
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.67.4"
+    "react-native": "0.67.4",
+    "react-native-dotenv": "^3.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
