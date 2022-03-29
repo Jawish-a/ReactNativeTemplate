@@ -2,9 +2,7 @@
 // for example ١٢٣٤٥ => 12345
 // PERSIAN (فارسی), ARABIC (عربي) , URDU (اُردُو)
 
-export default convertToArabicNumbers;
-
-const convertToArabicNumbers = n =>
-  n
+export const convertToArabicNumbers = s =>
+  s
     .replace(/[٠١٢٣٤٥٦٧٨٩]/g, d => d.charCodeAt(0) - 1632)
     .replace(/[۰۱۲۳۴۵۶۷۸۹]/g, d => d.charCodeAt(0) - 1776);

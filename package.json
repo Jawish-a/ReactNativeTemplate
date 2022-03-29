@@ -12,9 +12,13 @@
     "start:prod": "APP_ENV=production npx react-native start --reset-cache"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^8.2.0",
+    "axios": "^0.26.1",
     "react": "17.0.2",
     "react-native": "0.67.4",
-    "react-native-dotenv": "^3.3.1"
+    "react-native-appstate-hook": "^1.0.6",
+    "react-native-dotenv": "^3.3.1",
+    "react-query": "^3.34.19"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
