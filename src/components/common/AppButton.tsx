@@ -1,5 +1,6 @@
 import { Text, Pressable, PressableProps } from 'react-native';
 import React from 'react';
+import { AppText } from './AppText';
 
 export const AppButton: React.FC<PressableProps> = ({
   onPress,
@@ -7,7 +8,7 @@ export const AppButton: React.FC<PressableProps> = ({
 }) => {
   return (
     <Pressable {...otherProps} onPress={onPress}>
-      <Text>I'm pressable!</Text>
+      <AppText>I'm pressable!</AppText>
     </Pressable>
   );
 };
