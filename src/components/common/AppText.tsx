@@ -2,9 +2,21 @@ import { StyleSheet, Text, TextProps, useColorScheme } from 'react-native';
 import React, { Children } from 'react';
 import { typography } from '../../assets/theme/typography';
 import { colors } from '../../assets/theme/colors';
+import { renderAppColor } from '../../utils/renderAppColor';
 
-export const AppText: React.FC<TextProps> = ({ children, ...otherProps }) => {
+type AppTextType = {
+  appTextStatus?: 'enabled' | 'disabled';
+  appTextColor?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
+};
+
+export const AppText: React.FC<TextProps & AppTextType> = ({
+  appTextColor,
+  appTextStatus = 'enabled',
+  children,
+  ...otherProps
+}) => {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <Text
       // selectable={true}
@@ -12,7 +24,7 @@ export const AppText: React.FC<TextProps> = ({ children, ...otherProps }) => {
       {...otherProps}
       style={[
         styles.text,
-        isDarkMode && { color: colors.white },
+        renderAppColor(isDarkMode, appTextColor),
         otherProps.style,
       ]}>
       {children}
@@ -23,6 +35,6 @@ export const AppText: React.FC<TextProps> = ({ children, ...otherProps }) => {
 const styles = StyleSheet.create({
   text: {
     ...typography.p1,
-    color: colors.black,
+    color: colors.theme.black,
   },
 });

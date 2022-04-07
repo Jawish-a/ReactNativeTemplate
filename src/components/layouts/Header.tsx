@@ -22,13 +22,17 @@ export const Header: React.FC<HeaderType> = ({ title, ...props }) => {
   const nav = useNavigation();
   const route = useRoute();
 
+  const handleOnPress = () => {
+    console.log('left');
+  };
+
   return (
     <SafeAreaView
       key={route.name}
       style={[
         styles.SafeAreaView,
         {
-          backgroundColor: isDarkMode ? colors.dark : colors.white,
+          backgroundColor: isDarkMode ? colors.theme.dark : colors.theme.white,
           shadowColor: isDarkMode ? '#191919' : '#c4c4c4',
         },
       ]}>
@@ -37,7 +41,10 @@ export const Header: React.FC<HeaderType> = ({ title, ...props }) => {
         animated={true}
       />
       <View style={styles.container}>
-        <ActionContainer name={nav.canGoBack() ? 'chevron-left' : 'menu'} />
+        <ActionContainer
+          onPress={handleOnPress}
+          name={nav.canGoBack() ? 'chevron-left' : 'menu'}
+        />
         <MiddleTextContainer title={title + nav.canGoBack()} />
         <ActionContainer name={'bell'} />
       </View>

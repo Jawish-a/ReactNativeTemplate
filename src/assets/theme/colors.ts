@@ -1,10 +1,27 @@
-export const colors = {
+type ColorType = {
+  [name: string]: string;
+};
+
+type ColorCollectionType = {
+  [name: string]: ColorType;
+};
+
+export const colors: ColorCollectionType = {
   // primaryColor: config.PRIMARY_COLOR,
   // secondaryColor: config.SECONDARY_COLOR,
-  transparent: 'transparent',
-  black: '#000000',
-  white: '#ffffff',
-  dark: '#333333',
+  theme: {
+    transparent: 'transparent',
+    black: '#000000',
+    white: '#ffffff',
+    dark: '#333333',
+    light: '#f1f5f9',
+    primary: '#3366ff',
+    success: '#00e096',
+    info: '#0095ff',
+    warning: '#ffaa00',
+    danger: '#ff3d71',
+  },
+
   slate: {
     50: '#f8fafc',
     100: '#f1f5f9',

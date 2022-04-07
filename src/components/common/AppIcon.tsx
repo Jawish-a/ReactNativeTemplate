@@ -10,7 +10,7 @@ const AppIcon: React.FC<IconProps> = ({ ...props }) => {
   return (
     <Icon
       size={24}
-      color={isDarkMode ? colors.white : colors.dark}
+      color={isDarkMode ? colors.theme.white : colors.theme.dark}
       {...props}
     />
   );
