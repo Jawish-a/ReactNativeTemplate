@@ -1,3 +1,4 @@
+import { useDrawerStatus } from '@react-navigation/drawer';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
@@ -21,11 +22,12 @@ export const Header: React.FC<HeaderType> = ({ title, ...props }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const nav = useNavigation();
   const route = useRoute();
+  const isDrawerOpen = useDrawerStatus() === 'open';
 
   const handleOnPress = () => {
-    console.log('left');
+    if (!isDrawerOpen) nav.goBack();
   };
-
+  const openDrawer = () => nav.toggleDrawer();
   return (
     <SafeAreaView
       key={route.name}
@@ -42,10 +44,10 @@ export const Header: React.FC<HeaderType> = ({ title, ...props }) => {
       />
       <View style={styles.container}>
         <ActionContainer
-          onPress={handleOnPress}
-          name={nav.canGoBack() ? 'chevron-left' : 'menu'}
+          onPress={nav.canGoBack() ? handleOnPress : openDrawer}
+          name={nav.canGoBack() && isDrawerOpen ? 'chevron-left' : 'menu'}
         />
-        <MiddleTextContainer title={title + nav.canGoBack()} />
+        <MiddleTextContainer title={title} />
         <ActionContainer name={'bell'} />
       </View>
     </SafeAreaView>

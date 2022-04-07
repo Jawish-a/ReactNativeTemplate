@@ -6,6 +6,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Header } from './Header';
 
@@ -26,6 +27,7 @@ export const MainLayout: React.FC<MainLayoutType> = ({ title, children }) => {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         {children}
       </ScrollView>
+      <FlashMessage position="top" />
     </View>
   );
 };

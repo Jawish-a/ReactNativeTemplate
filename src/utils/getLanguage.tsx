@@ -5,6 +5,7 @@ import { Platform, NativeModules } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { APP_LANG } from '../constants/LocalStorageKeys';
+import { showMessage } from 'react-native-flash-message';
 
 const deviceLanguage =
   Platform.OS === 'ios'
@@ -26,6 +27,10 @@ export const getLocalStorageLanguage = async () => {
 export const setLocalStorageLanguage = async (language: string) => {
   try {
     await AsyncStorage.setItem(APP_LANG, language);
+    showMessage({
+      message: 'Simple message',
+      type: 'info',
+    });
   } catch (error) {
     console.log(error);
   }
