@@ -1,32 +1,100 @@
-import { Text, Pressable, PressableProps } from 'react-native';
+import { Pressable, PressableProps, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { AppText } from './AppText';
 import { colors } from '../../assets/theme/colors';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { typography } from '../../assets/theme/typography';
+import AppIcon from './AppIcon';
+import {
+  AppButtonIconComonentType,
+  AppButtonType,
+} from '../../constants/Types';
 
-type AppButtonType = {
-  height?: number;
+const AppButtonIconComonent = ({
+  size,
+  position = 'left',
+  iconName,
+  iconColor,
+}: AppButtonIconComonentType) => {
+  return (
+    <View
+      style={{
+        paddingLeft: position === 'right' ? size / 2 : 0,
+        paddingRight: position === 'left' ? size / 2 : 0,
+      }}>
+      {iconName && (
+        <AppIcon name={iconName} size={size * 1.3} color={iconColor} />
+      )}
+    </View>
+  );
 };
 
 export const AppButton: React.FC<PressableProps & AppButtonType> = ({
   onPress,
-  height = 40,
+  size,
+  textValue,
+  icon,
+  iconPosition,
+  status = 'enabled',
   ...otherProps
 }) => {
+  const showLeftIcon = icon && iconPosition !== 'right';
+  const showRightIcon = icon && iconPosition !== 'left' && !!iconPosition;
+  const isEnabled = status !== 'disabled';
+
   return (
     <Pressable
-      style={{
-        height: height,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: colors.theme.dark,
-        borderWidth: 1,
-        paddingHorizontal: 16,
-        // width: '100%',
-      }}
+      style={[
+        styles.basic,
+        !isEnabled && styles.disabled,
+        {
+          paddingHorizontal: size,
+          paddingVertical: size / 2,
+        },
+      ]}
       {...otherProps}
-      onPress={onPress}>
-      <AppText>I'm pressable!</AppText>
+      onPress={isEnabled ? onPress : null}>
+      {showLeftIcon && (
+        <AppButtonIconComonent
+          size={size}
+          position={iconPosition ?? 'left'}
+          iconName={icon}
+          iconColor={!isEnabled ? styles.disabled.color : undefined}
+        />
+      )}
+      <AppText
+        style={[
+          {
+            ...typography.label,
+            textTransform: 'uppercase',
+            fontSize: size,
+          },
+          !isEnabled && styles.disabled,
+        ]}>
+        {textValue}
+      </AppText>
+      {showRightIcon && (
+        <AppButtonIconComonent
+          size={size}
+          position={'right'}
+          iconName={icon}
+          iconColor={!isEnabled ? styles.disabled.color : undefined}
+        />
+      )}
     </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  basic: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: colors.theme.primary,
+    borderWidth: 1,
+    flexDirection: 'row',
+  },
+  disabled: {
+    backgroundColor: colors.gray[300],
+    borderColor: colors.gray[400],
+    color: colors.gray[500],
+  },
+});

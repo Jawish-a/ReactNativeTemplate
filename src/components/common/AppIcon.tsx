@@ -4,13 +4,15 @@ import Icon from 'react-native-vector-icons/Feather';
 import { IconProps } from 'react-native-vector-icons/Icon';
 import { colors } from '../../assets/theme/colors';
 
-const AppIcon: React.FC<IconProps> = ({ ...props }) => {
+const AppIcon: React.FC<IconProps> = ({ color, ...props }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <Icon
       size={24}
-      color={isDarkMode ? colors.theme.white : colors.theme.dark}
+      color={
+        color ? color : isDarkMode ? colors.theme.white : colors.theme.dark
+      }
       {...props}
     />
   );
