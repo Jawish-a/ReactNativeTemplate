@@ -9,6 +9,9 @@ import { useTranslation } from 'react-i18next';
 import { setLocalStorageLanguage } from '../utils/getLanguage';
 import { AppAvatar } from '../components/common/AppAvatar';
 import { typography } from '../assets/theme/typography';
+import { AppButtonGroup } from '../components/common/AppButtonGroup';
+import { AppCard } from '../components/common/AppCard';
+import { AppCheckBox } from '../components/common/AppCheckBox';
 
 type HomeScreenType = {};
 
@@ -25,7 +28,7 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
           textValue={'Change to EN'}
           icon={'box'}
           iconPosition={'right'}
-          status={'disabled'}
+          isEnabled={false}
         />
         <AppButton
           onPress={() => setLocalStorageLanguage('ar')}
@@ -41,14 +44,68 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
         <AppText appTextColor={'warning'}>I AM warning</AppText>
         <AppText appTextColor={'danger'}>I AM danger</AppText>
         <AppText appTextColor={'danger'}>I AM danger</AppText>
+        <AppButtonGroup
+          textValue={['hi', 'hello']}
+          isEnabled={[true, true]}
+          size={12}
+          action={[
+            () => {
+              console.log('hi');
+            },
+            () => {
+              console.log('hello');
+            },
+          ]}
+        />
         <AppAvatar
           alt={'aj'}
           size={120}
           shape={'round'}
           source={{
-            // uri: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
             uri: 'https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg',
           }}
+        />
+
+        <AppCard
+          // headerText={'hola'}
+          // headerImage={
+          //   'https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg'
+          // }
+          // headerImageHeight={130}
+          footerComponent={
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <AppButton
+                onPress={() => setLocalStorageLanguage('en')}
+                size={12}
+                textValue={'Change to EN'}
+                icon={'box'}
+                iconPosition={'right'}
+                isEnabled={false}
+              />
+              <AppButton
+                onPress={() => setLocalStorageLanguage('ar')}
+                size={12}
+                textValue={'Change to AR'}
+                icon={'cloud-rain'}
+                iconPosition={'left'}
+              />
+            </View>
+          }>
+          <AppText appTextColor={'danger'}>I AM danger</AppText>
+        </AppCard>
+
+        <AppCheckBox
+          onPress={() => {
+            console.log('ht');
+          }}
+          text={'hola'}
+          // isEnabled={false}
+          status={true}
         />
       </View>
     </MainLayout>

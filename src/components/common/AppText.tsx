@@ -34,7 +34,7 @@ export const AppText: React.FC<TextProps & AppTextType> = ({
 
 const styles = StyleSheet.create({
   text: {
-    ...typography.p1,
+    ...typography.p2,
     color: colors.theme.black,
   },
 });

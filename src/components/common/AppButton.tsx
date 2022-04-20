@@ -34,12 +34,11 @@ export const AppButton: React.FC<PressableProps & AppButtonType> = ({
   textValue,
   icon,
   iconPosition,
-  status = 'enabled',
+  isEnabled = true,
   ...otherProps
 }) => {
   const showLeftIcon = icon && iconPosition !== 'right';
   const showRightIcon = icon && iconPosition !== 'left' && !!iconPosition;
-  const isEnabled = status !== 'disabled';
 
   return (
     <Pressable
