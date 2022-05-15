@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ViewProps } from 'react-native';
 import { AppButton } from '../components/common/AppButton';
 import { AppText } from '../components/common/AppText';
@@ -12,12 +12,15 @@ import { typography } from '../assets/theme/typography';
 import { AppButtonGroup } from '../components/common/AppButtonGroup';
 import { AppCard } from '../components/common/AppCard';
 import { AppCheckBox } from '../components/common/AppCheckBox';
+import { AppTextInput } from '../components/common/AppTextInput';
+import { AppRadioButton } from '../components/common/AppRadioButton';
 
 type HomeScreenType = {};
 
 export const HomeScreen: React.FC<ViewProps> = ({}) => {
   const nav = useNavigation();
   const { t, i18n } = useTranslation();
+  const [text, setText] = useState('');
   return (
     <MainLayout title={'hola'}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -104,8 +107,30 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
             console.log('ht');
           }}
           text={'hola'}
-          // isEnabled={false}
+          isEnabled={true}
           status={true}
+          // direction={'left'}
+          // width={200}
+        />
+        <AppRadioButton
+          onPress={() => {
+            console.log('ht');
+          }}
+          text={'hola'}
+          isEnabled={true}
+          status={true}
+          // direction={'left'}
+          // width={200}
+        />
+        <AppTextInput
+          value={text}
+          setValue={setText}
+          placeholder={'hola'}
+          // error={true}
+          helperText={'Incorrect entry.'}
+          icon={'home'}
+          title={'home'}
+          editable={false}
         />
       </View>
     </MainLayout>

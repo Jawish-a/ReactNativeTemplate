@@ -12,7 +12,7 @@ import AppEmptySpace from './AppEmptySpace';
 import AppIcon from './AppIcon';
 import { AppText } from './AppText';
 
-type AppCheckBoxType = {
+type AppRadioButtonType = {
   onPress: () => any;
   text: string;
   checkBoxSize?: number;
@@ -23,7 +23,7 @@ type AppCheckBoxType = {
   width?: number | '100%';
 };
 
-export const AppCheckBox: React.FC<AppCheckBoxType> = ({
+export const AppRadioButton: React.FC<AppRadioButtonType> = ({
   onPress,
   checkBoxSize = 18,
   textStyle,
@@ -51,7 +51,7 @@ export const AppCheckBox: React.FC<AppCheckBoxType> = ({
       ]}>
       <Pressable onPress={changeState}>
         <AppIcon
-          name={selected ? 'check-square' : 'square'}
+          name={selected ? 'check-circle' : 'circle'}
           size={checkBoxSize}
           color={
             !isEnabled

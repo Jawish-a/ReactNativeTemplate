@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   ScrollView,
   StatusBar,
@@ -9,6 +9,7 @@ import {
 import FlashMessage from 'react-native-flash-message';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Header } from './Header';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 type MainLayoutType = {
   title: string;
@@ -24,9 +25,14 @@ export const MainLayout: React.FC<MainLayoutType> = ({ title, children }) => {
   return (
     <View style={[backgroundStyle, { flex: 1 }]}>
       <Header title={title} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <KeyboardAwareScrollView
+        style={{ backgroundColor: '#ffffff' }}
+        // contentContainerStyle={{ flex: 1 }}
+        scrollEnabled={true}
+        //
+      >
         {children}
-      </ScrollView>
+      </KeyboardAwareScrollView>
       <FlashMessage position="top" />
     </View>
   );
