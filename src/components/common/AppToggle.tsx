@@ -2,35 +2,32 @@ import React, { useState } from 'react';
 import {
   Pressable,
   StyleSheet,
+  Switch,
+  SwitchProps,
   TextProps,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { color } from 'react-native-reanimated';
 import { colors } from '../../assets/theme/colors';
 import AppEmptySpace from './AppEmptySpace';
-import AppIcon from './AppIcon';
 import { AppText } from './AppText';
 
-type AppRadioButtonType = {
-  onPress: () => any;
+type AppSwitchType = SwitchProps & {
+  onPress: () => void;
   text: string;
-  checkBoxSize?: number;
-  textStyle?: TextProps;
   isEnabled?: boolean;
   status?: boolean;
   direction?: 'right' | 'left';
-  width?: number | '100%';
 };
 
-export const AppRadioButton: React.FC<AppRadioButtonType> = ({
+export const AppSwitch: React.FC<AppSwitchType> = ({
   onPress,
-  checkBoxSize = 18,
-  textStyle,
   text,
   isEnabled = true,
   status = false,
   direction = 'right',
-  width,
+  ...switchProps
 }) => {
   const [selected, setSelected] = useState(status);
 
@@ -43,27 +40,29 @@ export const AppRadioButton: React.FC<AppRadioButtonType> = ({
   const isTextDirectionRight = direction === 'right';
   return (
     <View
+      //   pointerEvents={!isEnabled ? 'none' : 'auto'}
       style={[
         styles.container,
-        { width: width },
         { flexDirection: isTextDirectionRight ? 'row' : 'row-reverse' },
       ]}>
-      <Pressable onPress={changeState}>
-        <AppIcon
-          name={selected ? 'check-circle' : 'circle'}
-          size={checkBoxSize}
-          color={
-            !isEnabled
-              ? colors.gray[400]
-              : selected
-              ? colors.theme.primary
-              : colors.gray[600]
-          }
-        />
-      </Pressable>
+      <Switch
+        {...switchProps}
+        onChange={changeState}
+        value={selected}
+        disabled={!isEnabled}
+        style={{
+          transform: [{ scale: 0.7 }],
+        }}
+        thumbColor={isEnabled ? colors.theme.light : colors.gray[300]}
+        ios_backgroundColor={colors.gray[200]}
+        trackColor={{
+          false: colors.gray[300],
+          true: isEnabled ? colors.theme.success : colors.gray[200],
+        }}
+      />
       <AppEmptySpace width={8} />
       <Pressable onPress={changeState}>
-        <AppText style={[textStyle]}>{text}</AppText>
+        <AppText style={[]}>{text}</AppText>
       </Pressable>
     </View>
   );

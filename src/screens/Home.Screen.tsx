@@ -14,6 +14,7 @@ import { AppCard } from '../components/common/AppCard';
 import { AppCheckBox } from '../components/common/AppCheckBox';
 import { AppTextInput } from '../components/common/AppTextInput';
 import { AppRadioButton } from '../components/common/AppRadioButton';
+import { AppSwitch } from '../components/common/AppToggle';
 
 type HomeScreenType = {};
 
@@ -131,6 +132,13 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
           icon={'home'}
           title={'home'}
           editable={false}
+        />
+        <AppSwitch
+          text="hola"
+          // isEnabled={false}
+          value={true}
+          onPress={() => console.log('hit swwitch')}
+          direction={'left'}
         />
       </View>
     </MainLayout>
