@@ -9,10 +9,8 @@ import {
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { AppText } from './AppText';
 import { colors } from '../../assets/theme/colors';
-import { ThemeProvider } from '@react-navigation/native';
 import { typography } from '../../assets/theme/typography';
 import AppIcon from './AppIcon';
-import { ColorSpace } from 'react-native-reanimated';
 
 type AppTextInputType = TextInputProps & {
   value: string;

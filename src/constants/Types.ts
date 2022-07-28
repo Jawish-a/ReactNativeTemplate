@@ -4,7 +4,7 @@ import React, {
   ReactComponentElement,
   ReactNode,
 } from 'react';
-import { ImageProps, ImageStyle, StyleProp } from 'react-native';
+import { ImageProps, ImageStyle, StyleProp, SwitchProps } from 'react-native';
 import {
   FastImageProps,
   FastImageStaticProperties,
@@ -47,4 +47,13 @@ export type AppCardType = {
 export type AppEmptySpaceType = {
   height?: number;
   width?: number;
+};
+
+export type AppSwitchType = SwitchProps & {
+  onPress: () => void;
+  text: string;
+  isEnabled?: boolean;
+  status?: boolean;
+  direction?: 'right' | 'left';
+  scale?: number;
 };
