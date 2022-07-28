@@ -1,3 +1,4 @@
+import 'react-native-reanimated';
 import React, { Suspense } from 'react';
 import useAppState from 'react-native-appstate-hook';
 import { QueryClient, QueryClientProvider, QueryCache } from 'react-query';

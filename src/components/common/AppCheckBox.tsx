@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { color } from 'react-native-reanimated';
 import { colors } from '../../assets/theme/colors';
 import AppEmptySpace from './AppEmptySpace';
 import AppIcon from './AppIcon';

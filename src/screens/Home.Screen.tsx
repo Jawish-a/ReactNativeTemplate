@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 
 import React, { useState } from 'react';
-import { View, ViewProps } from 'react-native';
+import { Button, View, ViewProps } from 'react-native';
 import { AppButton } from '../components/common/AppButton';
 import { AppText } from '../components/common/AppText';
 import { MainLayout } from '../components/layouts/Main.Layout';
 import { useTranslation } from 'react-i18next';
 import { setLocalStorageLanguage } from '../utils/getLanguage';
 import { AppAvatar } from '../components/common/AppAvatar';
-import { typography } from '../assets/theme/typography';
 import { AppButtonGroup } from '../components/common/AppButtonGroup';
 import { AppCard } from '../components/common/AppCard';
 import { AppCheckBox } from '../components/common/AppCheckBox';
@@ -22,6 +21,8 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
   const nav = useNavigation();
   const { t, i18n } = useTranslation();
   const [text, setText] = useState('');
+  const [select, setSelect] = useState(true);
+
   return (
     <MainLayout title={'hola'}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -69,7 +70,6 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
             uri: 'https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg',
           }}
         />
-
         <AppCard
           // headerText={'hola'}
           // headerImage={
@@ -107,7 +107,7 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
           onPress={() => {
             console.log('ht');
           }}
-          text={'hola'}
+          text={'I am a checkbox'}
           isEnabled={true}
           status={true}
           // direction={'left'}
@@ -134,10 +134,10 @@ export const HomeScreen: React.FC<ViewProps> = ({}) => {
           editable={false}
         />
         <AppSwitch
-          text="hola"
+          text="I am a switch"
           // isEnabled={false}
-          value={true}
-          onPress={() => console.log('hit swwitch')}
+          status={select}
+          onPress={() => setSelect(!select)}
           direction={'left'}
         />
       </View>
